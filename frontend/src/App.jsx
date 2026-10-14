@@ -9,11 +9,12 @@ function App() {
   const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
 
-const url = import.meta.env.VITE_API_URL;
+  const API_URI =
+    import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api/students/";
 
   function getStudents() {
     axios
-      .get(url)
+      .get(API_URI)
       .then((response) => {
         setStudents(response.data);
       })
@@ -33,7 +34,7 @@ const url = import.meta.env.VITE_API_URL;
     };
 
     axios
-      .post(url, student)
+      .post(API_URI, student)
       .then(() => {
         setName("");
         setAge("");
