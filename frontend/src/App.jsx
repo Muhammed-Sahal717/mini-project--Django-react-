@@ -9,7 +9,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
 
-  const url = "http://127.0.0.1:8000/api/students/";
+const url = import.meta.env.VITE_API_URL;
 
   function getStudents() {
     axios
