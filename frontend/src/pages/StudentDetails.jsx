@@ -81,6 +81,7 @@ function StudentDetails() {
           name="age"
           type="number"
           placeholder="Age"
+          min="1"
           value={student.age}
           onChange={handleChange}
           required

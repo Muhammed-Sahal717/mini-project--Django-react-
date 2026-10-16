@@ -45,6 +45,7 @@ function AddStudentForm({ getStudents }) {
       <input
         type="number"
         placeholder="Age"
+        min="1"
         value={age}
         onChange={(e) => setAge(e.target.value)}
         required

@@ -67,7 +67,9 @@ function StudentList() {
               <td>{student.email}</td>
               <td>{student.course}</td>
               <td>
-                <Link to={`/students/${student.id}`}>View / Edit</Link>{" "}
+                <Link to={`/students/${student.id}`} className="edit-button">
+                  View / Edit
+                </Link>{" "}
                 <button onClick={() => deleteStudent(student.id)}>
                   Delete
                 </button>
