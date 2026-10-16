@@ -9,7 +9,7 @@ function StudentList() {
 
   async function getStudents() {
     try {
-      const response = await api.get("students/");
+      const response = await api.get("/");
       setStudents(response.data);
       setError("");
     } catch (error) {
