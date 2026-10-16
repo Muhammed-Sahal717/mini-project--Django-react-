@@ -1,0 +1,10 @@
+import axios from "axios";
+
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api/students/";
+
+const api = axios.create({
+  baseURL: API_URL.endsWith("/") ? API_URL : `${API_URL}/`,
+});
+
+export default api;
