@@ -11,15 +11,17 @@ function App() {
           <Link to="/" className="text-lg font-semibold">
             Student Management
           </Link>
-          <Link to="/" className="text-sm text-neutral-600 hover:text-black">
-            Home
-          </Link>
-          <Link
-            to="/students"
-            className="text-sm text-neutral-600 hover:text-black"
-          >
-            Students
-          </Link>
+          <div className="ml-auto flex items-center gap-6">
+            <Link to="/" className="text-sm text-neutral-600 hover:text-black">
+              Home
+            </Link>
+            <Link
+              to="/students"
+              className="text-sm text-neutral-600 hover:text-black"
+            >
+              Students
+            </Link>
+          </div>
         </div>
       </nav>
 
