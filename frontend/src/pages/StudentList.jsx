@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import AddStudentForm from "../components/AddStudentForm";
 import { Link } from "react-router-dom";
+import { Pencil, Trash2 } from "lucide-react";
 
 function StudentList() {
   const [students, setStudents] = useState([]);
@@ -26,12 +27,13 @@ function StudentList() {
 
     try {
       await api.delete(`/${id}/`);
-      getStudents(); // Refresh the list after deletion
+      getStudents();
     } catch (error) {
       console.error(error);
       setError("Failed to delete student. Please try again later.");
     }
   }
+
   useEffect(() => {
     (async () => {
       await getStudents();
@@ -39,45 +41,66 @@ function StudentList() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Student List</h1>
+    <div>
+      <h1 className="mb-6 text-2xl font-semibold tracking-tight">
+        Student List
+      </h1>
 
       <AddStudentForm getStudents={getStudents} />
 
-      {error && <p>{error}</p>}
+      {error && (
+        <p className="mb-4 rounded-lg border border-neutral-200 bg-white p-3 text-sm text-red-600">
+          {error}
+        </p>
+      )}
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Course</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {students.map((student) => (
-            <tr key={student.id}>
-              <td>{student.id}</td>
-              <td>{student.name}</td>
-              <td>{student.age}</td>
-              <td>{student.email}</td>
-              <td>{student.course}</td>
-              <td>
-                <Link to={`/students/${student.id}`} className="edit-button">
-                  View / Edit
-                </Link>{" "}
-                <button onClick={() => deleteStudent(student.id)}>
-                  Delete
-                </button>
-              </td>
+      <div className="overflow-x-auto rounded-xl border border-neutral-200 bg-white">
+        <table className="w-full text-left text-sm">
+          <thead className="border-b border-neutral-200 bg-neutral-100 text-neutral-600">
+            <tr>
+              <th className="px-4 py-3 font-medium">ID</th>
+              <th className="px-4 py-3 font-medium">Name</th>
+              <th className="px-4 py-3 font-medium">Age</th>
+              <th className="px-4 py-3 font-medium">Email</th>
+              <th className="px-4 py-3 font-medium">Course</th>
+              <th className="px-4 py-3 font-medium">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody className="divide-y divide-neutral-200">
+            {students.map((student) => (
+              <tr key={student.id} className="hover:bg-neutral-50">
+                <td className="px-4 py-3 text-neutral-500">{student.id}</td>
+                <td className="px-4 py-3 font-medium">{student.name}</td>
+                <td className="px-4 py-3">{student.age}</td>
+                <td className="px-4 py-3">{student.email}</td>
+                <td className="px-4 py-3">{student.course}</td>
+                <td className="px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <Link
+                      to={`/students/${student.id}`}
+                      aria-label={`Edit ${student.name}`}
+                      title="Edit student"
+                      className="rounded-md border border-neutral-300 p-2 text-neutral-700 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
+                    >
+                      <Pencil size={15} />
+                    </Link>
+
+                    <button
+                      onClick={() => deleteStudent(student.id)}
+                      aria-label={`Delete ${student.name}`}
+                      title="Delete student"
+                      className="rounded-md border border-neutral-300 p-2 text-neutral-700 hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+                    >
+                      <Trash2 size={15} />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
