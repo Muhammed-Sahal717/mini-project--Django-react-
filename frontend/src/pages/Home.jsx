@@ -6,9 +6,6 @@ function Home() {
     <div className="space-y-8">
       <section className="grid items-center gap-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 sm:p-10 lg:grid-cols-2">
         <div className="relative z-10">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Student Records
-          </p>
 
           <h1 className="max-w-md text-3xl font-semibold leading-tight tracking-tight text-neutral-900 sm:text-4xl">
             Everything about your students, in one place.
