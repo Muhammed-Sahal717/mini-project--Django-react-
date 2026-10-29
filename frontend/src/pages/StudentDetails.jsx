@@ -53,20 +53,20 @@ function StudentDetails() {
     }
   }
 
-  async function updateCourse() {
-    try {
-      await api.patch(`/${id}/`, {
-        course: student.course,
-      });
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
-      setMessage("Student details updated successfully.");
-    } catch (error) {
-      console.error(error);
-      setMessage("Failed to update student details. Please try again later.");
-    }
-  }
+  // async function updateCourse() {
+  //   try {
+  //     await api.patch(`/${id}/`, {
+  //       course: student.course,
+  //     });
+  //     setTimeout(() => {
+  //       setMessage("");
+  //     }, 3000);
+  //     setMessage("Student details updated successfully.");
+  //   } catch (error) {
+  //     console.error(error);
+  //     setMessage("Failed to update student details. Please try again later.");
+  //   }
+  // }
 
   const inputClass =
     "w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none placeholder:text-neutral-400 focus:border-neutral-600 focus:ring-1";
@@ -133,13 +133,13 @@ function StudentDetails() {
               Update All (PUT)
             </button>
 
-            <button
+            {/* <button
               type="button"
               onClick={updateCourse}
               className="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-medium hover:bg-yellow-100 cursor-pointer"
             >
               Update Course (PATCH)
-            </button>
+            </button> */}
           </div>
         </form>
 
