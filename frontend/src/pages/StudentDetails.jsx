@@ -130,7 +130,7 @@ function StudentDetails() {
               className="inline-flex items-center gap-2 rounded-lg bg-yellow-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-yellow-800 cursor-pointer"
             >
               <Pencil size={15} />
-              Update All
+              Update Student
             </button>
 
             {/* <button
